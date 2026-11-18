@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ghost Protocol Tech | Hub</title>
+    <title>Ghost Protocol Tech | Executive Hub</title>
     <style>
         * {
             margin: 0;
@@ -14,84 +14,174 @@
         body {
             background-color: #07090f;
             color: #00ffcc;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            padding: 15px;
+            overflow-x: hidden;
+            position: relative;
         }
-        .container {
-            background: rgba(12, 16, 26, 0.95);
-            border: 2px solid #00ffcc;
-            box-shadow: 0 0 25px rgba(0, 255, 204, 0.2);
-            border-radius: 12px;
-            padding: 20px;
-            max-width: 440px;
+
+        /* ব্যাকগ্রাউন্ডে ফুল স্ক্রিন ইমেজ ও ডার্ক ওভারলে অ্যানিমেশন */
+        .bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+            filter: brightness(0.4) contrast(1.2);
+            animation: bgZoom 15s infinite alternate ease-in-out;
         }
+
+        @keyframes bgZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.08); }
+        }
+
+        /* সাইবার স্ক্যানলাইন ওভারলে অ্যানিমেশন */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.4) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 100% 3px, 3px 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            background: rgba(10, 14, 23, 0.88);
+            border: 2px solid #00ffcc;
+            box-shadow: 0 0 35px rgba(0, 255, 204, 0.4);
+            border-radius: 14px;
+            padding: 22px;
+            max-width: 440px;
+            width: 90%;
+            backdrop-filter: blur(8px);
+            animation: borderGlow 3s infinite alternate;
+            margin: 20px 0;
+        }
+
+        @keyframes borderGlow {
+            0% { box-shadow: 0 0 15px rgba(0, 255, 204, 0.3); border-color: #00ffcc; }
+            100% { box-shadow: 0 0 30px rgba(255, 0, 85, 0.6); border-color: #ff0055; }
+        }
+
         .header {
             text-align: center;
             border-bottom: 1px dashed #00ffcc;
-            padding-bottom: 15px;
-            margin-bottom: 15px;
+            padding-bottom: 12px;
+            margin-bottom: 12px;
         }
+
         h1 {
-            font-size: 18px;
+            font-size: 19px;
             color: #fff;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 5px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
         }
+
         .role {
-            font-size: 12px;
+            font-size: 11px;
             color: #ff0055;
             font-weight: bold;
-            margin-top: 3px;
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        .section-title {
-            font-size: 13px;
+
+        .status-badge {
+            display: inline-block;
+            background: rgba(0, 255, 204, 0.12);
+            border: 1px solid #00ffcc;
             color: #00ffcc;
-            margin-bottom: 8px;
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-top: 8px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.8; }
+            50% { opacity: 0.4; }
+            100% { opacity: 0.8; }
+        }
+
+        .section-title {
+            font-size: 11px;
+            color: #00ffcc;
+            margin: 10px 0 6px 0;
             text-transform: uppercase;
             border-left: 3px solid #ff0055;
             padding-left: 6px;
+            font-weight: bold;
         }
-        .tool-card {
-            background: rgba(0, 255, 204, 0.03);
-            border: 1px solid rgba(0, 255, 204, 0.2);
-            padding: 10px;
-            border-radius: 6px;
+
+        .grid-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 7px;
             margin-bottom: 10px;
+        }
+
+        .mini-card {
+            background: rgba(0, 255, 204, 0.04);
+            border: 1px solid rgba(0, 255, 204, 0.2);
+            padding: 7px;
+            border-radius: 5px;
+            font-size: 10px;
+            color: #bbb;
+        }
+
+        .mini-card b {
+            color: #fff;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .tool-card {
+            background: rgba(0, 255, 204, 0.04);
+            border: 1px solid rgba(0, 255, 204, 0.2);
+            padding: 7px 10px;
+            border-radius: 5px;
+            margin-bottom: 7px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
+
         .tool-info h3 {
-            font-size: 13px;
+            font-size: 11px;
             color: #fff;
         }
+
         .tool-info p {
-            font-size: 11px;
+            font-size: 9px;
             color: #888;
         }
+
         .btn-sm {
             background: #00ffcc;
             color: #07090f;
-            padding: 6px 12px;
-            font-size: 11px;
+            padding: 5px 10px;
+            font-size: 10px;
             font-weight: bold;
             text-decoration: none;
             border-radius: 4px;
             transition: 0.2s;
         }
+
         .btn-sm:hover {
             background: #ff0055;
             color: #fff;
         }
-        .footer-btns {
-            margin-top: 15px;
-            text-align: center;
-        }
+
         .btn-full {
             display: block;
             width: 100%;
@@ -101,31 +191,68 @@
             font-weight: bold;
             text-decoration: none;
             border-radius: 5px;
-            font-size: 13px;
+            font-size: 12px;
+            text-align: center;
             margin-top: 8px;
+            box-shadow: 0 0 12px rgba(0, 255, 204, 0.3);
+            transition: 0.3s;
         }
+
         .btn-full:hover {
             background: #ff0055;
             color: #fff;
+            box-shadow: 0 0 15px rgba(255, 0, 85, 0.6);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #00ffcc;
+            color: #00ffcc;
         }
     </style>
 </head>
 <body>
 
+    <!-- ফুল স্ক্রিন ব্যাকগ্রাউন্ড ইমেজ -->
+    <img src="1000220314.jpg" alt="Background Legend" class="bg-image">
+    <div class="overlay"></div>
+
     <div class="container">
-        <!-- Header Profile Info -->
+        <!-- Header Section -->
         <div class="header">
             <h1>Ghost Protocol Tech</h1>
             <div class="role">Lead Architect & Full-Stack Developer</div>
+            <div class="status-badge">🟢 Systems Online & Secured (24/7)</div>
         </div>
 
-        <!-- Featured Tools / Projects Section -->
-        <div class="section-title">Active Deployments & Tools</div>
+        <!-- Core Skills Section -->
+        <div class="section-title">Core Expertise</div>
+        <div class="grid-box">
+            <div class="mini-card">
+                <b>⚡ Telegram Bots</b>
+                Advanced Automation & API
+            </div>
+            <div class="mini-card">
+                <b>🌐 Web Apps</b>
+                Full-Stack Mobile Platforms
+            </div>
+            <div class="mini-card">
+                <b>🛡️ OSINT Tools</b>
+                Security & Reconnaissance
+            </div>
+            <div class="mini-card">
+                <b>🚀 Deployment</b>
+                Cloud & VPS Management
+            </div>
+        </div>
+
+        <!-- Active Projects Section -->
+        <div class="section-title">Active Deployments</div>
         
         <div class="tool-card">
             <div class="tool-info">
-                <h3>⚡ Ghost Super Bot</h3>
-                <p>Modular Telegram Automation & OSINT</p>
+                <h3>⚡ Ghost Super Bot Hub</h3>
+                <p>Modular Telegram Control System</p>
             </div>
             <a href="https://t.me/kinji_hakari1" target="_blank" class="btn-sm">Access</a>
         </div>
@@ -133,15 +260,14 @@
         <div class="tool-card">
             <div class="tool-info">
                 <h3>🌐 Cyber Web Toolkit</h3>
-                <p>Full-stack mobile web apps & APIs</p>
+                <p>Interactive web apps & portals</p>
             </div>
             <a href="https://t.me/Ghost_Protocol_Tech" target="_blank" class="btn-sm">View</a>
         </div>
 
-        <!-- Direct Contact Actions -->
-        <div class="footer-btns">
-            <a href="https://t.me/kinji_hakari1" target="_blank" class="btn-full">💬 Direct Contact on Telegram</a>
-        </div>
+        <!-- Action Buttons -->
+        <a href="https://t.me/kinji_hakari1" target="_blank" class="btn-full">💬 Direct Contact on Telegram</a>
+        <a href="https://t.me/Ghost_Protocol_Tech" target="_blank" class="btn-full btn-outline">📢 Official Tech Channel</a>
     </div>
 
 </body>
