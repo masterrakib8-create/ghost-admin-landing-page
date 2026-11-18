@@ -3,270 +3,283 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ghost Protocol Tech | Executive Hub</title>
+    <title>Ghost Protocol Tech | Secure Hub</title>
     <style>
+        :root {
+            --bg-color: #05070b;
+            --card-bg: rgba(10, 15, 25, 0.95);
+            --accent-cyan: #00ffcc;
+            --accent-pink: #ff0055;
+            --text-main: #e0fbfc;
+            --text-muted: #8892b0;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Courier New', Courier, monospace;
         }
+
         body {
-            background-color: #07090f;
-            color: #00ffcc;
+            background-color: var(--bg-color);
+            color: var(--accent-cyan);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 15px;
             overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(0, 255, 204, 0.05) 0%, transparent 80%),
+                linear-gradient(rgba(0,255,204,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,255,204,0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 20px 20px, 20px 20px;
+        }
+
+        .cyber-card {
+            background: var(--card-bg);
+            border: 1px solid var(--accent-cyan);
+            box-shadow: 0 0 25px rgba(0, 255, 204, 0.15), inset 0 0 15px rgba(0, 255, 204, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 440px;
+            width: 100%;
             position: relative;
         }
 
-        /* ব্যাকগ্রাউন্ডে ফুল স্ক্রিন ইমেজ ও অ্যানিমেশন */
-        .bg-image {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -2;
-            filter: brightness(0.4) contrast(1.2);
-            animation: bgZoom 15s infinite alternate ease-in-out;
+        .cyber-card::before {
+            content: "// SYSTEM_SECURE";
+            position: absolute;
+            top: -10px;
+            right: 15px;
+            background: var(--bg-color);
+            color: var(--accent-pink);
+            font-size: 9px;
+            padding: 0 6px;
+            border: 1px solid var(--accent-pink);
+            letter-spacing: 1px;
         }
 
-        @keyframes bgZoom {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.08); }
-        }
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.4) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
-            background-size: 100% 3px, 3px 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .container {
-            background: rgba(10, 14, 23, 0.88);
-            border: 2px solid #00ffcc;
-            box-shadow: 0 0 35px rgba(0, 255, 204, 0.4);
-            border-radius: 14px;
-            padding: 22px;
-            max-width: 440px;
-            width: 90%;
-            backdrop-filter: blur(8px);
-            animation: borderGlow 3s infinite alternate;
-            margin: 20px 0;
-        }
-
-        @keyframes borderGlow {
-            0% { box-shadow: 0 0 15px rgba(0, 255, 204, 0.3); border-color: #00ffcc; }
-            100% { box-shadow: 0 0 30px rgba(255, 0, 85, 0.6); border-color: #ff0055; }
-        }
-
-        .header {
+        .profile-header {
             text-align: center;
-            border-bottom: 1px dashed #00ffcc;
-            padding-bottom: 12px;
-            margin-bottom: 12px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed rgba(0, 255, 204, 0.3);
+            margin-bottom: 15px;
+        }
+
+        .avatar-box {
+            width: 75px;
+            height: 75px;
+            margin: 0 auto 12px auto;
+            border: 2px solid var(--accent-cyan);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 255, 204, 0.1);
+            font-size: 28px;
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
+            animation: pulseGlow 2s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 10px rgba(0, 255, 204, 0.2); }
+            100% { box-shadow: 0 0 20px rgba(0, 255, 204, 0.6); }
         }
 
         h1 {
-            font-size: 19px;
+            font-size: 18px;
             color: #fff;
             text-transform: uppercase;
             letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+            margin-bottom: 4px;
         }
 
         .role {
             font-size: 11px;
-            color: #ff0055;
+            color: var(--accent-pink);
             font-weight: bold;
-            margin-top: 4px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        .status-badge {
+        .badge-online {
             display: inline-block;
-            background: rgba(0, 255, 204, 0.12);
-            border: 1px solid #00ffcc;
-            color: #00ffcc;
-            font-size: 10px;
-            padding: 3px 8px;
-            border-radius: 4px;
             margin-top: 8px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 0.8; }
-            50% { opacity: 0.4; }
-            100% { opacity: 0.8; }
+            font-size: 10px;
+            color: var(--accent-cyan);
+            background: rgba(0, 255, 204, 0.08);
+            padding: 3px 8px;
+            border-radius: 3px;
+            border: 1px solid rgba(0, 255, 204, 0.3);
         }
 
         .section-title {
             font-size: 11px;
-            color: #00ffcc;
-            margin: 10px 0 6px 0;
+            color: var(--text-main);
+            margin: 12px 0 8px 0;
             text-transform: uppercase;
-            border-left: 3px solid #ff0055;
-            padding-left: 6px;
-            font-weight: bold;
-        }
-
-        .grid-box {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 7px;
-            margin-bottom: 10px;
-        }
-
-        .mini-card {
-            background: rgba(0, 255, 204, 0.04);
-            border: 1px solid rgba(0, 255, 204, 0.2);
-            padding: 7px;
-            border-radius: 5px;
-            font-size: 10px;
-            color: #bbb;
-        }
-
-        .mini-card b {
-            color: #fff;
-            display: block;
-            margin-bottom: 2px;
-        }
-
-        .tool-card {
-            background: rgba(0, 255, 204, 0.04);
-            border: 1px solid rgba(0, 255, 204, 0.2);
-            padding: 7px 10px;
-            border-radius: 5px;
-            margin-bottom: 7px;
+            letter-spacing: 1px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
         }
 
-        .tool-info h3 {
-            font-size: 11px;
+        .section-title::before {
+            content: ">";
+            color: var(--accent-pink);
+            margin-right: 6px;
+            font-weight: bold;
+        }
+
+        .grid-skills {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .skill-item {
+            background: rgba(0, 255, 204, 0.02);
+            border: 1px solid rgba(0, 255, 204, 0.15);
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            color: var(--text-muted);
+        }
+
+        .skill-item b {
             color: #fff;
+            display: block;
+            margin-bottom: 2px;
+            font-size: 11px;
         }
 
-        .tool-info p {
-            font-size: 9px;
-            color: #888;
+        .action-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 255, 204, 0.03);
+            border: 1px solid rgba(0, 255, 204, 0.2);
+            padding: 10px 12px;
+            border-radius: 5px;
+            margin-bottom: 8px;
+            text-decoration: none;
+            color: #fff;
+            transition: 0.2s ease;
         }
 
-        .btn-sm {
-            background: #00ffcc;
-            color: #07090f;
-            padding: 5px 10px;
+        .action-link:hover {
+            background: rgba(0, 255, 204, 0.1);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
+        }
+
+        .action-link span {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .action-link .btn-tag {
+            background: var(--accent-cyan);
+            color: var(--bg-color);
             font-size: 10px;
             font-weight: bold;
-            text-decoration: none;
-            border-radius: 4px;
-            transition: 0.2s;
+            padding: 4px 8px;
+            border-radius: 3px;
         }
 
-        .btn-sm:hover {
-            background: #ff0055;
-            color: #fff;
-        }
-
-        .btn-full {
+        .btn-main {
             display: block;
             width: 100%;
-            padding: 10px;
-            background: #00ffcc;
-            color: #07090f;
+            padding: 11px;
+            background: var(--accent-cyan);
+            color: var(--bg-color);
             font-weight: bold;
+            text-align: center;
             text-decoration: none;
             border-radius: 5px;
             font-size: 12px;
-            text-align: center;
-            margin-top: 8px;
-            box-shadow: 0 0 12px rgba(0, 255, 204, 0.3);
-            transition: 0.3s;
+            margin-top: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
+            transition: 0.2s;
         }
 
-        .btn-full:hover {
-            background: #ff0055;
+        .btn-main:hover {
+            background: var(--accent-pink);
             color: #fff;
-            box-shadow: 0 0 15px rgba(255, 0, 85, 0.6);
+            box-shadow: 0 0 20px rgba(255, 0, 85, 0.5);
         }
 
         .btn-outline {
             background: transparent;
-            border: 1px solid #00ffcc;
-            color: #00ffcc;
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: var(--accent-cyan);
+            color: var(--bg-color);
         }
     </style>
 </head>
 <body>
 
-    <!-- এখানে আপনার গিটহাবের ছবির আসল ফাইলনেম বসানো হয়েছে -->
-    <img src="a5ef8eb9b7db12be8972d71bc3511aab.jpg" alt="Background Legend" class="bg-image">
-    <div class="overlay"></div>
-
-    <div class="container">
-        <!-- Header Section -->
-        <div class="header">
+    <div class="cyber-card">
+        <!-- Header -->
+        <div class="profile-header">
+            <div class="avatar-box">⚡</div>
             <h1>Ghost Protocol Tech</h1>
             <div class="role">Lead Architect & Full-Stack Developer</div>
-            <div class="status-badge">🟢 Systems Online & Secured (24/7)</div>
+            <div class="badge-online">🟢 SYSTEMS ONLINE // SECURED</div>
         </div>
 
-        <!-- Core Skills Section -->
-        <div class="section-title">Core Expertise</div>
-        <div class="grid-box">
-            <div class="mini-card">
-                <b>⚡ Telegram Bots</b>
-                Advanced Automation & API
+        <!-- Expertise -->
+        <div class="section-title">Core Competencies</div>
+        <div class="grid-skills">
+            <div class="skill-item">
+                <b>Telegram Bots</b>
+                GrammY & Node.js API
             </div>
-            <div class="mini-card">
-                <b>🌐 Web Apps</b>
-                Full-Stack Mobile Platforms
+            <div class="skill-item">
+                <b>Web Platforms</b>
+                Full-Stack Mobile Apps
             </div>
-            <div class="mini-card">
-                <b>🛡️ OSINT Tools</b>
-                Security & Reconnaissance
+            <div class="skill-item">
+                <b>OSINT Recon</b>
+                Security & Data Tools
             </div>
-            <div class="mini-card">
-                <b>🚀 Deployment</b>
-                Cloud & VPS Management
+            <div class="skill-item">
+                <b>Cloud Ops</b>
+                Server & Bot Deployment
             </div>
         </div>
 
-        <!-- Active Projects Section -->
-        <div class="section-title">Active Deployments</div>
+        <!-- Links / Deployments -->
+        <div class="section-title">Active Infrastructure</div>
         
-        <div class="tool-card">
-            <div class="tool-info">
-                <h3>⚡ Ghost Super Bot Hub</h3>
-                <p>Modular Telegram Control System</p>
+        <a href="https://t.me/kinji_hakari1" target="_blank" class="action-link">
+            <div>
+                <strong>Ghost Super Bot</strong>
+                <span>Modular Control Hub</span>
             </div>
-            <a href="https://t.me/kinji_hakari1" target="_blank" class="btn-sm">Access</a>
-        </div>
+            <span class="btn-tag">ACCESS</span>
+        </a>
 
-        <div class="tool-card">
-            <div class="tool-info">
-                <h3>🌐 Cyber Web Toolkit</h3>
-                <p>Interactive web apps & portals</p>
+        <a href="https://t.me/Ghost_Protocol_Tech" target="_blank" class="action-link">
+            <div>
+                <strong>Tech Channel</strong>
+                <span>Updates & Releases</span>
             </div>
-            <a href="https://t.me/Ghost_Protocol_Tech" target="_blank" class="btn-sm">View</a>
-        </div>
+            <span class="btn-tag" style="background: var(--accent-pink); color: #fff;">VIEW</span>
+        </a>
 
         <!-- Action Buttons -->
-        <a href="https://t.me/kinji_hakari1" target="_blank" class="btn-full">💬 Direct Contact on Telegram</a>
-        <a href="https://t.me/Ghost_Protocol_Tech" target="_blank" class="btn-full btn-outline">📢 Official Tech Channel</a>
+        <a href="https://t.me/kinji_hakari1" target="_blank" class="btn-main">💬 Direct Contact on Telegram</a>
+        <a href="https://t.me/Ghost_Protocol_Tech" target="_blank" class="btn-main btn-outline">📢 Official Tech Channel</a>
     </div>
 
 </body>
