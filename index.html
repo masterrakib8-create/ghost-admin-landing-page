@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghost Protocol Tech | Next-Gen Digital Solutions</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #05050a;
+            --card-bg: #0f101a;
+            --neon-green: #00ff66;
+            --neon-cyan: #00e5ff;
+            --text-main: #e0e0e0;
+            --text-muted: #8b9bb4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Fira Code', monospace;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(180deg, #0a0c16 0%, var(--bg-color) 100%);
+            border-bottom: 1px solid rgba(0, 255, 102, 0.2);
+        }
+
+        .logo-tag {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--neon-green);
+            text-shadow: 0 0 15px rgba(0, 255, 102, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            color: var(--neon-cyan);
+            font-size: 1rem;
+            margin-top: 10px;
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+        }
+
+        .owner-badge {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 6px 15px;
+            background: rgba(0, 229, 255, 0.1);
+            border: 1px solid var(--neon-cyan);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--neon-cyan);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            color: var(--neon-green);
+            margin-bottom: 20px;
+            border-left: 4px solid var(--neon-green);
+            padding-left: 10px;
+            text-transform: uppercase;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(0, 255, 102, 0.15);
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--neon-green);
+            box-shadow: 0 0 20px rgba(0, 255, 102, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            color: #fff;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card ul {
+            list-style-type: none;
+        }
+
+        .card ul li {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .card ul li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--neon-green);
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 35px 20px;
+            background: linear-gradient(0deg, #0a0c16 0%, var(--bg-color) 100%);
+            border-top: 1px solid rgba(0, 255, 102, 0.2);
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: transparent;
+            color: var(--neon-green);
+            border: 2px solid var(--neon-green);
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 255, 102, 0.2);
+        }
+
+        .btn:hover {
+            background: var(--neon-green);
+            color: var(--bg-color);
+            box-shadow: 0 0 25px rgba(0, 255, 102, 0.6);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-tag">GHOST PROTOCOL TECH</div>
+        <div class="subtitle">Next-Gen Web Apps, Cyber Security & Digital Solutions</div>
+        <div class="owner-badge">👑 Founder & Lead Developer: Master Rakib</div>
+    </header>
+
+    <div class="container">
+        
+        <!-- Core Expertise -->
+        <div class="section-title">Core Expertise & Skills</div>
+        <div class="grid">
+            <div class="card">
+                <h3>💻 Programming & Web</h3>
+                <ul>
+                    <li>Full-Stack Web Application Development</li>
+                    <li>Mobile-First Web Games & Digital Interfaces</li>
+                    <li>Telegram Automation Bots & Mini Apps</li>
+                    <li>Modern API Integration & Backend Architecture</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>🛡️ Cyber Security & OSINT</h3>
+                <ul>
+                    <li>Code Payload Analysis & Threat Detection</li>
+                    <li>OSINT (Open Source Intelligence) Tools</li>
+                    <li>Secure Proxy Network (HTTP/SOCKS5) Hubs</li>
+                    <li>Code Encoders, Decoders & Obfuscation</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Services Provided -->
+        <div class="section-title">Services & Solutions</div>
+        <div class="grid">
+            <div class="card">
+                <h3>🌐 Web & App Development</h3>
+                <ul>
+                    <li>Custom Responsive Landing Pages</li>
+                    <li>Interactive Web Game Design & Deployment</li>
+                    <li>Advanced Telegram Bot Workflow Setup</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>🏛️ Official & Digital Services</h3>
+                <ul>
+                    <li>NID Card & Voter Slip Verification Support</li>
+                    <li>Online Birth & Death Registration Assistance</li>
+                    <li>e-Passport Form Processing & Tracking</li>
+                    <li>Instant e-TIN Certificate & Tax Support</li>
+                    <li>Land Porcha (RS/CS) & Mutation Guidance</li>
+                    <li>Online Utility Bill Payment Services</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="cta-section">
+        <h2 style="font-family: 'Orbitron'; font-size: 1.1rem; margin-bottom: 15px; color: #fff;">Need a Custom Project or Service?</h2>
+        <a href="https://t.me/your_telegram_username" class="btn" target="_blank">Connect on Telegram</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Ghost Protocol Tech. All Rights Reserved. Built by Master Rakib.</p>
+    </footer>
+
+</body>
+</html>
